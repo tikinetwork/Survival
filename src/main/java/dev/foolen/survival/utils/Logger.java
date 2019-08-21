@@ -1,4 +1,4 @@
-package dev.foolen.survival.modules.utils;
+package dev.foolen.survival.utils;
 
 public class Logger {
     private static final String PREFIX = "[Survival]";

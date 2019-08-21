@@ -1,16 +1,13 @@
 package dev.foolen.survival.modules.warp.commands;
 
 import dev.foolen.survival.SurvivalPlugin;
-import dev.foolen.survival.modules.utils.Logger;
+import dev.foolen.survival.utils.Logger;
 import dev.foolen.survival.modules.warp.WarpModule;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
-import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.Configuration;
 import org.bukkit.entity.Player;
 
 public class Warp implements CommandExecutor {

@@ -1,10 +1,9 @@
 package dev.foolen.survival.modules.warp.commands;
 
 import dev.foolen.survival.SurvivalPlugin;
-import dev.foolen.survival.modules.utils.Logger;
+import dev.foolen.survival.utils.Logger;
 import dev.foolen.survival.modules.warp.WarpModule;
 import org.bukkit.ChatColor;
-import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

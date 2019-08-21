@@ -2,7 +2,7 @@ package dev.foolen.survival.modules.spawn.commands;
 
 import dev.foolen.survival.SurvivalPlugin;
 import dev.foolen.survival.modules.spawn.SpawnModule;
-import dev.foolen.survival.modules.utils.Logger;
+import dev.foolen.survival.utils.Logger;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;

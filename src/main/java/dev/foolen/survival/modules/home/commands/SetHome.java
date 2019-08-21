@@ -2,8 +2,7 @@ package dev.foolen.survival.modules.home.commands;
 
 import dev.foolen.survival.SurvivalPlugin;
 import dev.foolen.survival.modules.home.HomeModule;
-import dev.foolen.survival.modules.utils.Logger;
-import dev.foolen.survival.modules.warp.WarpModule;
+import dev.foolen.survival.utils.Logger;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
