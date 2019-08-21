@@ -22,6 +22,18 @@ commands:
   warp:
     usage: /<command>
     description: Teleports sender to warp location.
+  sethome:
+    usage: /<command> <name>
+    description: Sets home location to senders current location.
+  delhome:
+    usage: /<command> <name>
+    description: Deletes a home location.
+  homes:
+    usage: /<command>
+    description: Shows a list of senders homes.
+  home:
+    usage: /<command> <name>
+    description: Teleports sender to home location.
 
 permissions:
   survival.*:
@@ -37,6 +49,10 @@ permissions:
       survival.command.delwarp: true
       survival.command.warps: true
       survival.command.warp: true
+      survival.command.sethome: true
+      survival.command.delhome: true
+      survival.command.homes: true
+      survival.command.home: true
   survival.command.setspawn:
     description: Grants access to the /setspawn command.
     default: op
@@ -54,4 +70,16 @@ permissions:
     default: op
   survival.command.warp:
     description: Grants access to the /warp command.
+    default: op
+  survival.command.sethome:
+    description: Grants access to the /sethome command.
+    default: op
+  survival.command.delhome:
+    description: Grants access to the /delhome command.
+    default: op
+  survival.command.homes:
+    description: Grants access to the /homes command.
+    default: op
+  survival.command.home:
+    description: Grants access to the /home command.
     default: op

@@ -1,6 +1,7 @@
-package dev.foolen.survival.modules.warp.commands;
+package dev.foolen.survival.modules.home.commands;
 
 import dev.foolen.survival.SurvivalPlugin;
+import dev.foolen.survival.modules.home.HomeModule;
 import dev.foolen.survival.modules.utils.Logger;
 import dev.foolen.survival.modules.warp.WarpModule;
 import org.bukkit.ChatColor;
@@ -8,11 +9,14 @@ import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.Configuration;
 import org.bukkit.entity.Player;
+import org.shanerx.configapi.ConfigFile;
 
 import java.util.HashMap;
+import java.util.UUID;
 
-public class Warps implements CommandExecutor {
+public class Homes implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
@@ -22,25 +26,25 @@ public class Warps implements CommandExecutor {
 
         Player p = (Player) sender;
 
-        if (p.hasPermission("survival.command.warps") ||
+        if (p.hasPermission("survival.command.homes") ||
                 p.hasPermission("survival.command.*") ||
                 p.hasPermission("survival.*")) {
             p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.RED + "You do not have permission to execute this command!");
             return true;
         }
 
-        HashMap<String, Location> warpLocations = WarpModule.getWarpLocations();
+        HashMap<String, Location> homes = HomeModule.getHomesFromPlayer(p.getUniqueId());
 
-        if (warpLocations.size() > 0) {
-            StringBuilder warpsStr = new StringBuilder();
-            warpLocations.forEach((name, location) -> {
-                warpsStr.append(ChatColor.GRAY).append(name).append(ChatColor.GREEN).append(", ");
+        if (homes.size() > 0) {
+            StringBuilder homesStr = new StringBuilder();
+            homes.forEach((name, location) -> {
+                homesStr.append(ChatColor.GRAY).append(name).append(ChatColor.GREEN).append(", ");
             });
-            warpsStr.replace(warpsStr.length()-2, warpsStr.length(), ""); //Remove last comma and space
+            homesStr.replace(homesStr.length() - 2, homesStr.length(), ""); //Remove last comma and space
 
-            p.sendMessage(SurvivalPlugin.PREFIX + "Available warps: " + warpsStr + ChatColor.GREEN + ".");
+            p.sendMessage(SurvivalPlugin.PREFIX + "Available homes: " + homesStr + ChatColor.GREEN + ".");
         } else {
-            p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.RED + "No warp locations have been set.");
+            p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.RED + "No homes have been set.");
         }
         return true;
     }

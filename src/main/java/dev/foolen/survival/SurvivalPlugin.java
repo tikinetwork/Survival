@@ -1,5 +1,6 @@
 package dev.foolen.survival;
 
+import dev.foolen.survival.modules.home.HomeModule;
 import dev.foolen.survival.modules.spawn.SpawnModule;
 import dev.foolen.survival.modules.warp.WarpModule;
 import org.bukkit.ChatColor;
@@ -8,17 +9,20 @@ import org.bukkit.plugin.java.JavaPlugin;
 public final class SurvivalPlugin extends JavaPlugin {
 
     private static SurvivalPlugin instance;
-    public static final String PREFIX = ChatColor.DARK_GRAY + "[" + ChatColor.GREEN + "Survival" + ChatColor.DARK_GRAY + "]" + ChatColor.GREEN;
+    public static String PREFIX;
 
     @Override
     public void onEnable() {
         instance = this;
 
+        // Load default configuration options
         saveDefaultConfig();
+        PREFIX = ChatColor.translateAlternateColorCodes('&', getConfig().getString("prefix"));
 
         // Load modules
         new SpawnModule();
         new WarpModule();
+        new HomeModule();
     }
 
     public static SurvivalPlugin getInstance() {
