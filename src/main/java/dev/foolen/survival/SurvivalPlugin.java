@@ -1,6 +1,8 @@
 package dev.foolen.survival;
 
+import dev.foolen.survival.modules.connectionmessages.ConnectionMessageModule;
 import dev.foolen.survival.modules.home.HomeModule;
+import dev.foolen.survival.modules.sleeppercentage.SleepPercentageModule;
 import dev.foolen.survival.modules.spawn.SpawnModule;
 import dev.foolen.survival.modules.warp.WarpModule;
 import org.bukkit.ChatColor;
@@ -23,6 +25,8 @@ public final class SurvivalPlugin extends JavaPlugin {
         new SpawnModule();
         new WarpModule();
         new HomeModule();
+        new ConnectionMessageModule();
+        new SleepPercentageModule();
     }
 
     public static SurvivalPlugin getInstance() {

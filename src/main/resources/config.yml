@@ -1,1 +1,9 @@
 prefix: "&8[&2Survival&8]&a"
+
+########################################
+# Modules
+########################################
+
+sleepingpercentage:
+  # The percentage sleeping players needed to switch night to day.
+  percentage: 49
