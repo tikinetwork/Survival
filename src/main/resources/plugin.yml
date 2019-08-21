@@ -2,3 +2,24 @@ name: Survival
 version: ${project.version}
 main: dev.foolen.survival.Survival
 api-version: 1.13
+
+commands:
+  setspawn:
+    usage: /<command>
+    description: Sets spawn location to senders current location.
+  spawn:
+    usage: /<command>
+    description: Teleports sender to spawn location.
+
+permissions:
+  survival.*:
+    description: Grants access to all survival plugin features.
+    children:
+      survival.command.*: true
+  survival.command.*:
+    description: Grants access to all commands.
+    children:
+      survival.command.setspawn: true
+  survival.command.setspawn:
+    description: Grants access to the /setspawn command.
+    default: op
