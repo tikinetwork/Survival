@@ -1,17 +1,19 @@
-package dev.foolen.survival.modules.spawn.commands;
+package dev.foolen.survival.modules.warp.commands;
 
 import dev.foolen.survival.SurvivalPlugin;
-import dev.foolen.survival.modules.spawn.SpawnModule;
 import dev.foolen.survival.modules.utils.Logger;
+import dev.foolen.survival.modules.warp.WarpModule;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.Configuration;
 import org.bukkit.entity.Player;
 
-public class SetSpawn implements CommandExecutor {
+public class Warp implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
@@ -21,29 +23,27 @@ public class SetSpawn implements CommandExecutor {
 
         Player p = (Player) sender;
 
-        if (p.hasPermission("survival.command.setspawn") ||
+        if (p.hasPermission("survival.command.warp") ||
                 p.hasPermission("survival.command.*") ||
                 p.hasPermission("survival.*")) {
             p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.RED + "You do not have permission to execute this command!");
             return true;
         }
 
-        SurvivalPlugin plugin = SurvivalPlugin.getInstance();
-        Configuration config = plugin.getConfig();
-        Location loc = p.getLocation();
+        if (args.length == 0) {
+            p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.RED + "Please specify a name.");
+            p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.RED + "Command usage: /warp <name>");
+            return true;
+        }
 
-        config.set("spawn.x", loc.getX());
-        config.set("spawn.y", loc.getY());
-        config.set("spawn.z", loc.getZ());
-        config.set("spawn.yaw", loc.getYaw());
-        config.set("spawn.pitch", loc.getPitch());
-        config.set("spawn.world", loc.getWorld().getName());
+        String warpName = args[0].toLowerCase();
+        Location warpLocation = WarpModule.getWarpLocation(warpName);
 
-        plugin.saveConfig();
-        SpawnModule.setSpawnLocation(loc);
-        loc.getWorld().setSpawnLocation(loc);
-
-        p.sendMessage(SurvivalPlugin.PREFIX + "Spawn location has been set!");
+        if (warpLocation != null) {
+            p.teleport(warpLocation);
+        } else {
+            p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.RED + warpName + "'s warp location has not been set.");
+        }
         return true;
     }
 }

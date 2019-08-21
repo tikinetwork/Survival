@@ -10,6 +10,18 @@ commands:
   spawn:
     usage: /<command>
     description: Teleports sender to spawn location.
+  setwarp:
+    usage: /<command> <name>
+    description: Sets warp location to senders current location.
+  delwarp:
+    usage: /<command> <name>
+    description: Deletes a warp location.
+  warps:
+    usage: /<command>
+    description: Shows a list of all available warps.
+  warp:
+    usage: /<command>
+    description: Teleports sender to warp location.
 
 permissions:
   survival.*:
@@ -20,6 +32,26 @@ permissions:
     description: Grants access to all commands.
     children:
       survival.command.setspawn: true
+      survival.command.spawn: true
+      survival.command.setwarp: true
+      survival.command.delwarp: true
+      survival.command.warps: true
+      survival.command.warp: true
   survival.command.setspawn:
     description: Grants access to the /setspawn command.
+    default: op
+  survival.command.spawn:
+    description: Grants access to the /spawn command.
+    default: op
+  survival.command.setwarp:
+    description: Grants access to the /setwarp command.
+    default: op
+  survival.command.delwarp:
+    description: Grants access to the /delwarp command.
+    default: op
+  survival.command.warps:
+    description: Grants access to the /warps command.
+    default: op
+  survival.command.warp:
+    description: Grants access to the /warp command.
     default: op

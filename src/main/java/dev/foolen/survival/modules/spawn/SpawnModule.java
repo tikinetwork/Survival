@@ -15,16 +15,16 @@ public class SpawnModule {
     private static Location spawnLocation;
 
     public SpawnModule() {
-        loadSpawnLocation();
-
         SurvivalPlugin plugin = SurvivalPlugin.getInstance();
+
+        loadSpawnLocation(plugin);
 
         registerCommands(plugin);
         registerEvents(plugin);
     }
 
-    private void loadSpawnLocation() {
-        Configuration config = SurvivalPlugin.getInstance().getConfig();
+    private void loadSpawnLocation(SurvivalPlugin plugin) {
+        Configuration config = plugin.getConfig();
 
         if (config.isSet("spawn.x") &&
             config.isSet("spawn.y") &&
