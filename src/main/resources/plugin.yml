@@ -46,6 +46,21 @@ commands:
   gm:
     usage: /<command> <mode>
     description: Changes sender's gamemode.
+  teleport:
+    usage: /<command> <name>
+    description: Teleports sender to a player.
+  tp:
+    usage: /<command> <name>
+    description: Teleports sender to a player.
+  tpa:
+    usage: /<command> <name>
+    description: Requests teleport approve to a player.
+  tpaccept:
+    usage: /<command> <name>
+    description: Accepts teleport request from a player.
+  tpdeny:
+    usage: /<command> <name>
+    description: Denies teleport request from a player.
 
 permissions:
   survival.*:
@@ -68,6 +83,10 @@ permissions:
       survival.command.rules: true
       survival.command.fly: true
       survival.command.gamemode: true
+      survival.command.teleport: true
+      survival.command.tpa: true
+      survival.command.tpaccept: true
+      survival.command.tpdeny: true
   survival.command.setspawn:
     description: Grants access to the /setspawn command.
     default: op
@@ -106,4 +125,16 @@ permissions:
     default: op
   survival.command.gamemode:
     description: Grants access to the /gamemode command.
+    default: op
+  survival.command.teleport:
+    description: Grants access to the /teleport command.
+    default: op
+  survival.command.tpa:
+    description: Grants access to the /tpa command.
+    default: op
+  survival.command.tpaccept:
+    description: Grants access to the /tpaccept command.
+    default: op
+  survival.command.tpdeny:
+    description: Grants access to the /tpdeny command.
     default: op

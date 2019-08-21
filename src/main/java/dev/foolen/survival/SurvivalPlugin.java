@@ -8,6 +8,7 @@ import dev.foolen.survival.modules.home.HomeModule;
 import dev.foolen.survival.modules.rules.RulesModule;
 import dev.foolen.survival.modules.sleeppercentage.SleepPercentageModule;
 import dev.foolen.survival.modules.spawn.SpawnModule;
+import dev.foolen.survival.modules.teleportation.TeleportationModule;
 import dev.foolen.survival.modules.warp.WarpModule;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -35,6 +36,7 @@ public final class SurvivalPlugin extends JavaPlugin {
         new RulesModule();
         new FlyModule();
         new GameModeModule();
+        new TeleportationModule();
     }
 
     public static SurvivalPlugin getInstance() {

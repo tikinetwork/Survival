@@ -27,7 +27,7 @@ public class GameMode implements CommandExecutor {
 
         if (args.length == 0) {
             p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.RED + "Please specify a mode.");
-            p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.RED + "Command usage: /" + command.getLabel() + " <name>");
+            p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.RED + "Command usage: /" + command.getLabel() + " <mode>");
             return true;
         }
 
