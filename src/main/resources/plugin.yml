@@ -40,6 +40,12 @@ commands:
   fly:
     usage: /<command>
     description: Toggles sender's fly mode.
+  gamemode:
+    usage: /<command> <mode>
+    description: Changes sender's gamemode.
+  gm:
+    usage: /<command> <mode>
+    description: Changes sender's gamemode.
 
 permissions:
   survival.*:
@@ -61,6 +67,7 @@ permissions:
       survival.command.home: true
       survival.command.rules: true
       survival.command.fly: true
+      survival.command.gamemode: true
   survival.command.setspawn:
     description: Grants access to the /setspawn command.
     default: op
@@ -96,4 +103,7 @@ permissions:
     default: op
   survival.command.fly:
     description: Grants access to the /fly command.
+    default: op
+  survival.command.gamemode:
+    description: Grants access to the /gamemode command.
     default: op
