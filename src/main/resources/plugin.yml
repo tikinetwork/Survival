@@ -6,13 +6,13 @@ api-version: 1.13
 commands:
   setspawn:
     usage: /<command>
-    description: Sets spawn location to senders current location.
+    description: Sets spawn location to sender's current location.
   spawn:
     usage: /<command>
     description: Teleports sender to spawn location.
   setwarp:
     usage: /<command> <name>
-    description: Sets warp location to senders current location.
+    description: Sets warp location to sender's current location.
   delwarp:
     usage: /<command> <name>
     description: Deletes a warp location.
@@ -24,19 +24,22 @@ commands:
     description: Teleports sender to warp location.
   sethome:
     usage: /<command> <name>
-    description: Sets home location to senders current location.
+    description: Sets home location to sender's current location.
   delhome:
     usage: /<command> <name>
     description: Deletes a home location.
   homes:
     usage: /<command>
-    description: Shows a list of senders homes.
+    description: Shows a list of sender's homes.
   home:
     usage: /<command> <name>
     description: Teleports sender to home location.
   rules:
     usage: /<command>
     description: Shows a list of rules.
+  fly:
+    usage: /<command>
+    description: Toggles sender's fly mode.
 
 permissions:
   survival.*:
@@ -57,6 +60,7 @@ permissions:
       survival.command.homes: true
       survival.command.home: true
       survival.command.rules: true
+      survival.command.fly: true
   survival.command.setspawn:
     description: Grants access to the /setspawn command.
     default: op
@@ -89,4 +93,7 @@ permissions:
     default: op
   survival.command.rules:
     description: Grants access to the /rules command.
+    default: op
+  survival.command.fly:
+    description: Grants access to the /fly command.
     default: op
