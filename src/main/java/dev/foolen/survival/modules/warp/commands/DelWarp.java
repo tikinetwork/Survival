@@ -10,6 +10,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.Configuration;
 import org.bukkit.entity.Player;
+import org.shanerx.configapi.ConfigFile;
 
 public class DelWarp implements CommandExecutor {
     @Override
@@ -36,11 +37,13 @@ public class DelWarp implements CommandExecutor {
 
         String warpName = args[0].toLowerCase();
         SurvivalPlugin plugin = SurvivalPlugin.getInstance();
-        Configuration config = plugin.getConfig();
+        ConfigFile cf = new ConfigFile(plugin.getDataFolder(), "warps");
+        cf.createConfig();
+        Configuration config = cf.getConfig();
 
-        config.set("warps." + warpName, null);
+        config.set(warpName, null);
 
-        plugin.saveConfig();
+        cf.save();
         WarpModule.removeWarpLocation(warpName);
 
         p.sendMessage(SurvivalPlugin.PREFIX + warpName + "'s warp location has been removed!");

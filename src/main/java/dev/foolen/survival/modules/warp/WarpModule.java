@@ -9,6 +9,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.configuration.Configuration;
+import org.shanerx.configapi.ConfigFile;
 
 import java.util.HashMap;
 
@@ -25,21 +26,21 @@ public class WarpModule {
     }
 
     private void loadWarpLocations(SurvivalPlugin plugin) {
-        Configuration config = plugin.getConfig();
+        ConfigFile cf = new ConfigFile(plugin.getDataFolder(), "warps");
+        cf.createConfig();
+        Configuration config = cf.getConfig();
 
         warpLocations = new HashMap<>();
 
-        if (config.isSet("warps")) {
-            for(String warpName : config.getConfigurationSection("warps").getKeys(false)) {
-                World world = Bukkit.getWorld(config.getString("warps." + warpName + ".world"));
-                int x = config.getInt("warps." + warpName + ".x");
-                int y = config.getInt("warps." + warpName + ".y");
-                int z = config.getInt("warps." + warpName + ".z");
-                float yaw = config.getLong("warps." + warpName + ".yaw");
-                float pitch = config.getLong("warps." + warpName + ".pitch");
+        for (String warpName : config.getConfigurationSection("").getKeys(false)) {
+            World world = Bukkit.getWorld(config.getString(warpName + ".world"));
+            int x = config.getInt(warpName + ".x");
+            int y = config.getInt(warpName + ".y");
+            int z = config.getInt(warpName + ".z");
+            float yaw = config.getLong(warpName + ".yaw");
+            float pitch = config.getLong(warpName + ".pitch");
 
-                warpLocations.put(warpName, new Location(world, x, y, z, yaw, pitch));
-            }
+            warpLocations.put(warpName, new Location(world, x, y, z, yaw, pitch));
         }
     }
 

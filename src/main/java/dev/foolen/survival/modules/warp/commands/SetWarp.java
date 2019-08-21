@@ -10,6 +10,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.Configuration;
 import org.bukkit.entity.Player;
+import org.shanerx.configapi.ConfigFile;
 
 public class SetWarp implements CommandExecutor {
     @Override
@@ -36,17 +37,19 @@ public class SetWarp implements CommandExecutor {
 
         String warpName = args[0].toLowerCase();
         SurvivalPlugin plugin = SurvivalPlugin.getInstance();
-        Configuration config = plugin.getConfig();
+        ConfigFile cf = new ConfigFile(plugin.getDataFolder(), "warps");
+        cf.createConfig();
+        Configuration config = cf.getConfig();
         Location loc = p.getLocation();
 
-        config.set("warps." +warpName+ ".x", loc.getX());
-        config.set("warps." +warpName+ ".y", loc.getY());
-        config.set("warps." +warpName+ ".z", loc.getZ());
-        config.set("warps." +warpName+ ".yaw", loc.getYaw());
-        config.set("warps." +warpName+ ".pitch", loc.getPitch());
-        config.set("warps." +warpName+ ".world", loc.getWorld().getName());
+        config.set(warpName + ".x", loc.getX());
+        config.set(warpName + ".y", loc.getY());
+        config.set(warpName + ".z", loc.getZ());
+        config.set(warpName + ".yaw", loc.getYaw());
+        config.set(warpName + ".pitch", loc.getPitch());
+        config.set(warpName + ".world", loc.getWorld().getName());
 
-        plugin.saveConfig();
+        cf.save();
         WarpModule.setWarpLocation(warpName, loc);
 
         p.sendMessage(SurvivalPlugin.PREFIX + warpName + "'s warp location has been set!");
