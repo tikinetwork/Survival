@@ -3,12 +3,10 @@ package dev.foolen.survival.modules.spawn;
 import dev.foolen.survival.SurvivalPlugin;
 import dev.foolen.survival.modules.spawn.commands.SetSpawn;
 import dev.foolen.survival.modules.spawn.commands.Spawn;
-import dev.foolen.survival.modules.spawn.listeners.PlayerJoin;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.configuration.Configuration;
-import org.bukkit.plugin.PluginManager;
 
 public class SpawnModule {
 
@@ -20,7 +18,6 @@ public class SpawnModule {
         SurvivalPlugin plugin = SurvivalPlugin.getInstance();
 
         registerCommands(plugin);
-        registerEvents(plugin);
     }
 
     private void loadSpawnLocation() {
@@ -57,11 +54,5 @@ public class SpawnModule {
     private void registerCommands(SurvivalPlugin plugin) {
         plugin.getCommand("setspawn").setExecutor(new SetSpawn());
         plugin.getCommand("spawn").setExecutor(new Spawn());
-    }
-
-    private void registerEvents(SurvivalPlugin plugin) {
-        PluginManager pm = plugin.getServer().getPluginManager();
-
-        pm.registerEvents(new PlayerJoin(), plugin);
     }
 }
