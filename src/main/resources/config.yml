@@ -7,3 +7,17 @@ prefix: "&8[&2Survival&8]&a"
 sleepingpercentage:
   # The percentage sleeping players needed to switch night to day.
   percentage: 49
+
+rules:
+  - 'No Griefing'
+  - 'No Spamming'
+  - 'No Advertising'
+  - 'No Trolling/Flaming'
+  - 'No Asking for OP, Ranks, or Items'
+  - 'Respect all Players'
+  - 'No Racist or Sexist Remarks.'
+  - 'No Mods/Hacks'
+  - 'No Constant Full Caps Messages'
+  - 'No Builds Near Spawn'
+  - 'No 1x1 Towers'
+  - 'No floating trees'

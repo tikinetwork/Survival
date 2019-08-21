@@ -3,6 +3,7 @@ package dev.foolen.survival;
 import dev.foolen.survival.modules.connectionmessages.ConnectionMessageModule;
 import dev.foolen.survival.modules.enhancedmobdrops.EnhancedMobDropsModule;
 import dev.foolen.survival.modules.home.HomeModule;
+import dev.foolen.survival.modules.rules.RulesModule;
 import dev.foolen.survival.modules.sleeppercentage.SleepPercentageModule;
 import dev.foolen.survival.modules.spawn.SpawnModule;
 import dev.foolen.survival.modules.warp.WarpModule;
@@ -29,6 +30,7 @@ public final class SurvivalPlugin extends JavaPlugin {
         new ConnectionMessageModule();
         new SleepPercentageModule();
         new EnhancedMobDropsModule();
+        new RulesModule();
     }
 
     public static SurvivalPlugin getInstance() {

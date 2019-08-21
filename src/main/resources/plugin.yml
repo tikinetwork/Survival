@@ -34,6 +34,9 @@ commands:
   home:
     usage: /<command> <name>
     description: Teleports sender to home location.
+  rules:
+    usage: /<command>
+    description: Shows a list of rules.
 
 permissions:
   survival.*:
@@ -53,6 +56,7 @@ permissions:
       survival.command.delhome: true
       survival.command.homes: true
       survival.command.home: true
+      survival.command.rules: true
   survival.command.setspawn:
     description: Grants access to the /setspawn command.
     default: op
@@ -82,4 +86,7 @@ permissions:
     default: op
   survival.command.home:
     description: Grants access to the /home command.
+    default: op
+  survival.command.rules:
+    description: Grants access to the /rules command.
     default: op
