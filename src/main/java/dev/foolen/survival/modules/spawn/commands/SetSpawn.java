@@ -40,6 +40,7 @@ public class SetSpawn implements CommandExecutor {
 
         SurvivalPlugin.getInstance().saveConfig();
         SpawnModule.setSpawnLocation(loc);
+        loc.getWorld().setSpawnLocation(loc);
 
         p.sendMessage(SurvivalPlugin.PREFIX + "Spawn location has been set!");
         return true;
