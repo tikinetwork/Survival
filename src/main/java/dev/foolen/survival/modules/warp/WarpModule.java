@@ -5,24 +5,34 @@ import dev.foolen.survival.modules.warp.commands.DelWarp;
 import dev.foolen.survival.modules.warp.commands.SetWarp;
 import dev.foolen.survival.modules.warp.commands.Warp;
 import dev.foolen.survival.modules.warp.commands.Warps;
+import dev.foolen.survival.modules.warp.listeners.PlayerMove;
+import dev.foolen.survival.modules.warp.listeners.PlayerQuit;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.configuration.Configuration;
+import org.bukkit.entity.Player;
+import org.bukkit.plugin.PluginManager;
 import org.shanerx.configapi.ConfigFile;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.UUID;
 
 public class WarpModule {
 
     private static HashMap<String, Location> warpLocations;
+    private static ArrayList<UUID> teleportingPlayers;
 
     public WarpModule() {
+        teleportingPlayers = new ArrayList<>();
+
         SurvivalPlugin plugin = SurvivalPlugin.getInstance();
 
         loadWarpLocations(plugin);
 
         registerCommands(plugin);
+        registerEvents(plugin);
     }
 
     private void loadWarpLocations(SurvivalPlugin plugin) {
@@ -65,5 +75,28 @@ public class WarpModule {
         plugin.getCommand("delwarp").setExecutor(new DelWarp());
         plugin.getCommand("warps").setExecutor(new Warps());
         plugin.getCommand("warp").setExecutor(new Warp());
+    }
+
+    private void registerEvents(SurvivalPlugin plugin) {
+        PluginManager pm = plugin.getServer().getPluginManager();
+
+        pm.registerEvents(new PlayerMove(), plugin);
+        pm.registerEvents(new PlayerQuit(), plugin);
+    }
+
+    public static boolean isTeleporting(UUID uuid) {
+        return teleportingPlayers.contains(uuid);
+    }
+
+    public static void addTeleportingPlayer(UUID uuid) {
+        if (!teleportingPlayers.contains(uuid)) {
+            teleportingPlayers.add(uuid);
+        }
+    }
+
+    public static void removeTeleportingPlayer(UUID uuid) {
+        if (teleportingPlayers.contains(uuid)) {
+            teleportingPlayers.remove(uuid);
+        }
     }
 }

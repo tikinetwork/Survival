@@ -1,7 +1,7 @@
-package dev.foolen.survival.modules.home.listeners;
+package dev.foolen.survival.modules.warp.listeners;
 
 import dev.foolen.survival.modules.home.HomeModule;
-import dev.foolen.survival.modules.teleportation.TeleportationModule;
+import dev.foolen.survival.modules.warp.WarpModule;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -12,8 +12,8 @@ public class PlayerQuit implements Listener {
     public void PlayerMove(PlayerQuitEvent e) {
         Player p = e.getPlayer();
 
-        if (HomeModule.isTeleporting(p.getUniqueId())) {
-            HomeModule.removeTeleportingPlayer(p.getUniqueId());
+        if (WarpModule.isTeleporting(p.getUniqueId())) {
+            WarpModule.removeTeleportingPlayer(p.getUniqueId());
         }
     }
 }

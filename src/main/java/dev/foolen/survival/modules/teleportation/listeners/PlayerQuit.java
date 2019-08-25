@@ -14,8 +14,8 @@ public class PlayerQuit implements Listener {
     public void PlayerMove(PlayerQuitEvent e) {
         Player p = e.getPlayer();
 
-        if (TeleportationModule.isTeleporting(p)) {
-            TeleportationModule.removeTeleportingPlayer(p);
+        if (TeleportationModule.isTeleporting(p.getUniqueId())) {
+            TeleportationModule.removeTeleportingPlayer(p.getUniqueId());
         }
     }
 }

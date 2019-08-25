@@ -13,8 +13,8 @@ public class PlayerMove implements Listener {
     public void PlayerMove(PlayerMoveEvent e) {
         Player p = e.getPlayer();
 
-        if (TeleportationModule.isTeleporting(p)) {
-            TeleportationModule.removeTeleportingPlayer(p);
+        if (TeleportationModule.isTeleporting(p.getUniqueId())) {
+            TeleportationModule.removeTeleportingPlayer(p.getUniqueId());
             p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.RED + "You moved! Teleportation cancelled.");
         }
     }

@@ -2,25 +2,17 @@ package dev.foolen.survival.modules.spawn.listeners;
 
 import dev.foolen.survival.SurvivalPlugin;
 import dev.foolen.survival.modules.spawn.SpawnModule;
+import dev.foolen.survival.modules.warp.WarpModule;
 import org.bukkit.ChatColor;
-import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
 
-public class PlayerJoin implements Listener {
+public class PlayerMove implements Listener {
     @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent e) {
-        Location spawnLocation = SpawnModule.getSpawnLocation();
-
+    public void PlayerMove(PlayerMoveEvent e) {
         Player p = e.getPlayer();
-
-        if (spawnLocation != null) {
-            if (!p.hasPlayedBefore()) {
-                p.teleport(spawnLocation);
-            }
-        }
 
         if (SpawnModule.isTeleporting(p.getUniqueId())) {
             SpawnModule.removeTeleportingPlayer(p.getUniqueId());

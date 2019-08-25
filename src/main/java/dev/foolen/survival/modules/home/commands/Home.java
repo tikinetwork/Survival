@@ -34,28 +34,33 @@ public class Home implements CommandExecutor {
 
         String homeName = args[0].toLowerCase();
 
-        HomeModule.addTeleportingPlayer(p);
-        p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.GREEN + "Teleporting you in 10 seconds, please stand still.");
+        if (HomeModule.getHomesFromPlayer(p.getUniqueId()) != null) {
+            Location homeLocation = HomeModule.getHomeFromPlayer(p.getUniqueId(), homeName);
 
-        Bukkit.getScheduler().scheduleSyncDelayedTask(SurvivalPlugin.getInstance(), new Runnable() {
-            @Override
-            public void run() {
-                if (HomeModule.isTeleporting(p)) {
-                    HomeModule.removeTeleportingPlayer(p);
+            if (homeLocation != null) {
+                if (!p.hasPermission("survival.bypass.waiting")) {
+                    HomeModule.addTeleportingPlayer(p.getUniqueId());
+                    p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.GREEN + "Teleporting you in 10 seconds, please stand still.");
 
-                    if (HomeModule.getHomesFromPlayer(p.getUniqueId()) != null) {
-                        Location homeLocation = HomeModule.getHomeFromPlayer(p.getUniqueId(), homeName);
+                    Bukkit.getScheduler().scheduleSyncDelayedTask(SurvivalPlugin.getInstance(), new Runnable() {
+                        @Override
+                        public void run() {
+                            if (HomeModule.isTeleporting(p.getUniqueId())) {
+                                HomeModule.removeTeleportingPlayer(p.getUniqueId());
 
-                        if (homeLocation != null) {
-                            p.teleport(homeLocation);
-                            return;
+                                p.teleport(homeLocation);
+                            }
                         }
-                    }
+                    }, 20 * 10); // 10 seconds
+                } else {
+                    p.teleport(homeLocation);
                 }
 
-                p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.GRAY + homeName + "'s" + ChatColor.RED + " location has not been set.");
+                return true;
             }
-        }, 20 * 10); // 10 seconds
+        }
+
+        p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.GRAY + homeName + "'s" + ChatColor.RED + " location has not been set.");
         return true;
     }
 }

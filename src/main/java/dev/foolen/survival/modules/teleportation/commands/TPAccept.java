@@ -37,19 +37,23 @@ public class TPAccept implements CommandExecutor {
         p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.GRAY + target.getName() + "'s " + ChatColor.GREEN + "teleport request has been approved.");
         target.sendMessage(SurvivalPlugin.PREFIX + ChatColor.GRAY + p.getName() + ChatColor.GREEN + " approved your teleport request.");
 
-        target.sendMessage(SurvivalPlugin.PREFIX + ChatColor.GREEN + "Teleporting you in 10 seconds, please stand still.");
-        TeleportationModule.addTeleportingPlayer(target);
+        if (!p.hasPermission("survival.bypass.waiting")) {
+            target.sendMessage(SurvivalPlugin.PREFIX + ChatColor.GREEN + "Teleporting you in 10 seconds, please stand still.");
+            TeleportationModule.addTeleportingPlayer(target.getUniqueId());
 
-        Bukkit.getScheduler().scheduleSyncDelayedTask(SurvivalPlugin.getInstance(), new Runnable() {
-            @Override
-            public void run() {
-                if (TeleportationModule.isTeleporting(target)) {
-                    TeleportationModule.removeTeleportingPlayer(target);
+            Bukkit.getScheduler().scheduleSyncDelayedTask(SurvivalPlugin.getInstance(), new Runnable() {
+                @Override
+                public void run() {
+                    if (TeleportationModule.isTeleporting(target.getUniqueId())) {
+                        TeleportationModule.removeTeleportingPlayer(target.getUniqueId());
 
-                    target.teleport(p.getLocation());
+                        target.teleport(p.getLocation());
+                    }
                 }
-            }
-        }, 20 * 10); // wait 10 seconds
+            }, 20 * 10); // wait 10 seconds
+        } else {
+            target.teleport(p.getLocation());
+        }
         return true;
     }
 }

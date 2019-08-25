@@ -8,13 +8,20 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.configuration.Configuration;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
+
+import java.util.ArrayList;
+import java.util.UUID;
 
 public class SpawnModule {
 
     private static Location spawnLocation;
+    private static ArrayList<UUID> teleportingPlayers;
 
     public SpawnModule() {
+        teleportingPlayers = new ArrayList<>();
+
         SurvivalPlugin plugin = SurvivalPlugin.getInstance();
 
         loadSpawnLocation(plugin);
@@ -63,5 +70,21 @@ public class SpawnModule {
         PluginManager pm = plugin.getServer().getPluginManager();
 
         pm.registerEvents(new PlayerJoin(), plugin);
+    }
+
+    public static boolean isTeleporting(UUID uuid) {
+        return teleportingPlayers.contains(uuid);
+    }
+
+    public static void addTeleportingPlayer(UUID uuid) {
+        if (!teleportingPlayers.contains(uuid)) {
+            teleportingPlayers.add(uuid);
+        }
+    }
+
+    public static void removeTeleportingPlayer(UUID uuid) {
+        if (teleportingPlayers.contains(uuid)) {
+            teleportingPlayers.remove(uuid);
+        }
     }
 }

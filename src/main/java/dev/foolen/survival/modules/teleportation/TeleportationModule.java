@@ -63,15 +63,19 @@ public class TeleportationModule {
         }
     }
 
-    public static boolean isTeleporting(Player p) {
-        return teleportingPlayers.contains(p.getUniqueId());
+    public static boolean isTeleporting(UUID uuid) {
+        return teleportingPlayers.contains(uuid);
     }
 
-    public static void addTeleportingPlayer(Player p) {
-        teleportingPlayers.add(p.getUniqueId());
+    public static void addTeleportingPlayer(UUID uuid) {
+        if (!teleportingPlayers.contains(uuid)) {
+            teleportingPlayers.add(uuid);
+        }
     }
 
-    public static void removeTeleportingPlayer(Player p) {
-        teleportingPlayers.remove(p.getUniqueId());
+    public static void removeTeleportingPlayer(UUID uuid) {
+        if (teleportingPlayers.contains(uuid)) {
+            teleportingPlayers.remove(uuid);
+        }
     }
 }

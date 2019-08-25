@@ -1,8 +1,8 @@
-package dev.foolen.survival.modules.home.listeners;
+package dev.foolen.survival.modules.warp.listeners;
 
 import dev.foolen.survival.SurvivalPlugin;
 import dev.foolen.survival.modules.home.HomeModule;
-import dev.foolen.survival.modules.teleportation.TeleportationModule;
+import dev.foolen.survival.modules.warp.WarpModule;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -14,8 +14,8 @@ public class PlayerMove implements Listener {
     public void PlayerMove(PlayerMoveEvent e) {
         Player p = e.getPlayer();
 
-        if (HomeModule.isTeleporting(p.getUniqueId())) {
-            HomeModule.removeTeleportingPlayer(p.getUniqueId());
+        if (WarpModule.isTeleporting(p.getUniqueId())) {
+            WarpModule.removeTeleportingPlayer(p.getUniqueId());
             p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.RED + "You moved! Teleportation cancelled.");
         }
     }

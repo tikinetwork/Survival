@@ -73,6 +73,18 @@ permissions:
     description: Grants access to all survival plugin features.
     children:
       survival.command.*: true
+      survival.bypass.*: true
+  survival.bypass.*:
+    description: Grants bypass to everything.
+    children:
+      survival.bypass.waiting: true
+      survival.bypass.homelimit: true
+  survival.bypass.waiting:
+    description: Bypasses teleportation waiting time.
+    default: op
+  survival.bypass.homelimit:
+    description: Bypasses maximum amount of homes.
+    default: op
   survival.command.*:
     description: Grants access to all commands.
     children:

@@ -73,6 +73,10 @@ public class SetHome implements CommandExecutor {
     private boolean hasMaxHomes(Player p, HashMap<String, Location> homes) {
         int maxHomesAllowed = 3;
 
+        if (p.hasPermission("survival.bypass.homelimit")) {
+            return false;
+        }
+
         if (p.hasPermission("group.vip+")) {
             maxHomesAllowed = 10;
         } else if (p.hasPermission("group.vip")) {

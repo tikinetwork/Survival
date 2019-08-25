@@ -30,6 +30,9 @@
 | Permission                | Description                          |
 |---------------------------|--------------------------------------|
 | `survival.*` | Grants access to all survival plugin features. |
+| `survival.bypass.*` | Grants bypass to everything. |
+| `survival.bypass.waiting` | Bypasses teleportation waiting time. |
+| `survival.bypass.homelimit` | Bypasses maximum amount of homes. |
 | `survival.command.*` | Grants access to all commands. |
 | `survival.command.setspawn` | Grants access to the `/setspawn` command. |
 | `survival.command.spawn` | Grants access to the `/spawn` command. |
