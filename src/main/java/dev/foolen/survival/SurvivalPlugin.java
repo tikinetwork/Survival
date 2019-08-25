@@ -1,5 +1,6 @@
 package dev.foolen.survival;
 
+import dev.foolen.survival.modules.collision.CollisionModule;
 import dev.foolen.survival.modules.connectionmessages.ConnectionMessageModule;
 import dev.foolen.survival.modules.enhancedmobdrops.EnhancedMobDropsModule;
 import dev.foolen.survival.modules.fly.FlyModule;
@@ -38,6 +39,7 @@ public final class SurvivalPlugin extends JavaPlugin {
         new GameModeModule();
         new TeleportationModule();
         new PVPModule();
+        new CollisionModule();
     }
 
     public static SurvivalPlugin getInstance() {

@@ -36,7 +36,7 @@ public class TPA implements CommandExecutor {
         if (target != null) {
             boolean requestSend = TeleportationModule.makeTeleportRequest(p, target);
             if (requestSend) {
-                p.sendMessage(SurvivalPlugin.PREFIX + "Your teleportation request to " + ChatColor.GRAY + target.getName() + ChatColor.GREEN + " has been sent!");
+                p.sendMessage(SurvivalPlugin.PREFIX + "Your teleportation request has been sent!");
                 target.sendMessage(SurvivalPlugin.PREFIX + ChatColor.GOLD + p.getName() + " would like to teleport to you. Please respond with " + ChatColor.GRAY + "/tpaccept " + ChatColor.GOLD + "or " + ChatColor.GRAY + "/tpdeny" + ChatColor.GOLD + ".");
             } else {
                 p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.RED + "You already have an active teleport request to this player!");

@@ -29,7 +29,7 @@ public class PVP implements CommandExecutor {
             return true;
         }
 
-        p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.GREEN + "Switching PVP mode, please stand still!");
+        p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.GREEN + "Switching PVP mode, please stand still.");
         PVPModule.addTogglingPlayer(p);
 
         Bukkit.getScheduler().scheduleSyncDelayedTask(SurvivalPlugin.getInstance(), new Runnable() {

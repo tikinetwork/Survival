@@ -23,14 +23,14 @@ public class PVPModule {
         SurvivalPlugin plugin = SurvivalPlugin.getInstance();
 
         registerCommands(plugin);
-        registerListeners(plugin);
+        registerEvents(plugin);
     }
 
     private void registerCommands(SurvivalPlugin plugin) {
         plugin.getCommand("pvp").setExecutor(new PVP());
     }
 
-    private void registerListeners(SurvivalPlugin plugin) {
+    private void registerEvents(SurvivalPlugin plugin) {
         PluginManager pm = plugin.getServer().getPluginManager();
 
         pm.registerEvents(new EntityDamage(), plugin);

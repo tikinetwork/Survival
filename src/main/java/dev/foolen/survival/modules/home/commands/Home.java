@@ -3,6 +3,7 @@ package dev.foolen.survival.modules.home.commands;
 import dev.foolen.survival.SurvivalPlugin;
 import dev.foolen.survival.modules.home.HomeModule;
 import dev.foolen.survival.utils.Logger;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -32,16 +33,29 @@ public class Home implements CommandExecutor {
         }
 
         String homeName = args[0].toLowerCase();
-        if (HomeModule.getHomesFromPlayer(p.getUniqueId()) != null) {
-            Location homeLocation = HomeModule.getHomeFromPlayer(p.getUniqueId(), homeName);
 
-            if (homeLocation != null) {
-                p.teleport(homeLocation);
-                return true;
+        HomeModule.addTeleportingPlayer(p);
+        p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.GREEN + "Teleporting you in 10 seconds, please stand still.");
+
+        Bukkit.getScheduler().scheduleSyncDelayedTask(SurvivalPlugin.getInstance(), new Runnable() {
+            @Override
+            public void run() {
+                if (HomeModule.isTeleporting(p)) {
+                    HomeModule.removeTeleportingPlayer(p);
+
+                    if (HomeModule.getHomesFromPlayer(p.getUniqueId()) != null) {
+                        Location homeLocation = HomeModule.getHomeFromPlayer(p.getUniqueId(), homeName);
+
+                        if (homeLocation != null) {
+                            p.teleport(homeLocation);
+                            return;
+                        }
+                    }
+                }
+
+                p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.GRAY + homeName + "'s" + ChatColor.RED + " location has not been set.");
             }
-        }
-
-        p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.GRAY + homeName + "'s" + ChatColor.RED + " location has not been set.");
+        }, 20 * 10); // 10 seconds
         return true;
     }
 }
