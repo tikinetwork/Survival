@@ -21,9 +21,9 @@ public class DelWarp implements CommandExecutor {
 
         Player p = (Player) sender;
 
-        if (p.hasPermission("survival.command.delwarp") ||
-                p.hasPermission("survival.command.*") ||
-                p.hasPermission("survival.*")) {
+        if (!p.hasPermission("survival.command.delwarp") ||
+                !p.hasPermission("survival.command.*") ||
+                !p.hasPermission("survival.*")) {
             p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.RED + "You do not have permission to execute this command!");
             return true;
         }
@@ -43,8 +43,12 @@ public class DelWarp implements CommandExecutor {
         config.set(warpName, null);
 
         cf.save();
-        WarpModule.removeWarpLocation(warpName);
+        if (WarpModule.getWarpLocation(warpName) == null) {
+            p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.RED + warpName + "'s warp location has not been set!");
+            return true;
+        }
 
+        WarpModule.removeWarpLocation(warpName);
         p.sendMessage(SurvivalPlugin.PREFIX + warpName + "'s warp location has been removed!");
         return true;
     }

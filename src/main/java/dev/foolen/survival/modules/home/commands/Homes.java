@@ -22,16 +22,16 @@ public class Homes implements CommandExecutor {
 
         Player p = (Player) sender;
 
-        if (p.hasPermission("survival.command.homes") ||
-                p.hasPermission("survival.command.*") ||
-                p.hasPermission("survival.*")) {
+        if (!p.hasPermission("survival.command.homes") ||
+                !p.hasPermission("survival.command.*") ||
+                !p.hasPermission("survival.*")) {
             p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.RED + "You do not have permission to execute this command!");
             return true;
         }
 
         HashMap<String, Location> homes = HomeModule.getHomesFromPlayer(p.getUniqueId());
 
-        if (homes.size() > 0) {
+        if (homes != null) {
             StringBuilder homesStr = new StringBuilder();
             homes.forEach((name, location) -> {
                 homesStr.append(ChatColor.GRAY).append(name).append(ChatColor.GREEN).append(", ");

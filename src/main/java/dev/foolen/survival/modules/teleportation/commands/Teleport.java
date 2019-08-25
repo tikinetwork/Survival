@@ -19,9 +19,9 @@ public class Teleport implements CommandExecutor {
 
         Player p = (Player) sender;
 
-        if (p.hasPermission("survival.command.teleport") ||
-                p.hasPermission("survival.command.*") ||
-                p.hasPermission("survival.*")) {
+        if (!p.hasPermission("survival.command.teleport") ||
+                !p.hasPermission("survival.command.*") ||
+                !p.hasPermission("survival.*")) {
             p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.RED + "You do not have permission to execute this command!");
             return true;
         }
@@ -35,7 +35,12 @@ public class Teleport implements CommandExecutor {
         Player target = Bukkit.getPlayer(args[0]);
 
         if (target != null) {
-            p.sendMessage(SurvivalPlugin.PREFIX + "You have been teleport to " + target.getName() + "!");
+            if (target.getName() == p.getName()) {
+                p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.RED + "You can't teleport to yourself!");
+            } else {
+                p.teleport(target.getLocation());
+                p.sendMessage(SurvivalPlugin.PREFIX + "You have been teleport to " + target.getName() + "!");
+            }
         } else {
             p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.RED + args[0] + " can not be found. Are you sure he is online on the same server as you?");
         }

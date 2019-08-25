@@ -33,14 +33,17 @@ public class HomeModule {
         cf.createConfig();
         Configuration config = cf.getConfig();
 
-        for (String uuid : config.getConfigurationSection("").getKeys(false)) {
-            for (String homeName : config.getConfigurationSection(uuid).getKeys(false)) {
-                World world = Bukkit.getWorld(config.getString(uuid + "." + homeName + ".world"));
-                int x = config.getInt(uuid + "." + homeName + ".x");
-                int y = config.getInt(uuid + "." + homeName + ".y");
-                int z = config.getInt(uuid + "." + homeName + ".z");
-                float pitch = config.getLong(uuid + "." + homeName + ".pitch");
-                float yaw = config.getLong(uuid + "." + homeName + ".yaw");
+        for (String strUUID : config.getConfigurationSection("").getKeys(false)) {
+            UUID uuid = UUID.fromString(strUUID);
+            homes.put(uuid, new HashMap<>());
+
+            for (String homeName : config.getConfigurationSection(strUUID).getKeys(false)) {
+                World world = Bukkit.getWorld(config.getString(strUUID + "." + homeName + ".world"));
+                int x = config.getInt(strUUID + "." + homeName + ".x");
+                int y = config.getInt(strUUID + "." + homeName + ".y");
+                int z = config.getInt(strUUID + "." + homeName + ".z");
+                float pitch = config.getLong(strUUID + "." + homeName + ".pitch");
+                float yaw = config.getLong(strUUID + "." + homeName + ".yaw");
 
                 homes.get(uuid).put(homeName, new Location(world, x, y, z, pitch, yaw));
             }

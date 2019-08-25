@@ -20,9 +20,9 @@ public class Home implements CommandExecutor {
 
         Player p = (Player) sender;
 
-        if (p.hasPermission("survival.command.home") ||
-                p.hasPermission("survival.command.*") ||
-                p.hasPermission("survival.*")) {
+        if (!p.hasPermission("survival.command.home") ||
+                !p.hasPermission("survival.command.*") ||
+                !p.hasPermission("survival.*")) {
             p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.RED + "You do not have permission to execute this command!");
             return true;
         }
@@ -34,13 +34,16 @@ public class Home implements CommandExecutor {
         }
 
         String homeName = args[0].toLowerCase();
-        Location homeLocation = HomeModule.getHomeFromPlayer(p.getUniqueId(), homeName);
+        if (HomeModule.getHomesFromPlayer(p.getUniqueId()) != null) {
+            Location homeLocation = HomeModule.getHomeFromPlayer(p.getUniqueId(), homeName);
 
-        if (homeLocation != null) {
-            p.teleport(homeLocation);
-        } else {
-            p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.RED + homeName + "'s location has not been set.");
+            if (homeLocation != null) {
+                p.teleport(homeLocation);
+                return true;
+            }
         }
+
+        p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.RED + homeName + "'s location has not been set.");
         return true;
     }
 }

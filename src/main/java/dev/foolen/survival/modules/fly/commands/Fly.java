@@ -18,9 +18,9 @@ public class Fly implements CommandExecutor {
 
         Player p = (Player) sender;
 
-        if (p.hasPermission("survival.command.fly") ||
-                p.hasPermission("survival.command.*") ||
-                p.hasPermission("survival.*")) {
+        if (!p.hasPermission("survival.command.fly") ||
+                !p.hasPermission("survival.command.*") ||
+                !p.hasPermission("survival.*")) {
             p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.RED + "You do not have permission to execute this command!");
             return true;
         }
@@ -30,9 +30,9 @@ public class Fly implements CommandExecutor {
         p.setFlying(fly);
 
         if (fly) {
-            p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.GREEN + "Fly mode has been enabled!");
+            p.sendMessage(SurvivalPlugin.PREFIX + "Fly mode has been enabled!");
         } else {
-            p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.RED + "Fly mode has been disabled!");
+            p.sendMessage(SurvivalPlugin.PREFIX + "Fly mode has been disabled!");
         }
         return true;
     }

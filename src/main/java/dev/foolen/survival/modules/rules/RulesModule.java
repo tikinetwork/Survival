@@ -20,7 +20,9 @@ public class RulesModule {
     private void loadRules(SurvivalPlugin plugin) {
         rules = new ArrayList<>();
         Configuration config = plugin.getConfig();
-        rules.addAll(config.getConfigurationSection("rules").getKeys(false));
+        if (config.isSet("rules")) {
+            rules.addAll(config.getStringList("rules"));
+        }
     }
 
     private void registerCommands(SurvivalPlugin plugin) {

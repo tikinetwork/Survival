@@ -14,7 +14,11 @@ public class EntityDeath implements Listener {
                 e.getDrops().add(new ItemStack(Material.ELYTRA));
                 break;
             case SHULKER:
-                e.getDrops().add(new ItemStack(Material.SHULKER_SHELL, 2));
+                e.getDrops().forEach(item -> {
+                    if (item.getType() == Material.SHULKER_SHELL) {
+                        item.setAmount(2);
+                    }
+                });
                 break;
         }
     }
