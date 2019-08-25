@@ -20,9 +20,7 @@ public class Spawn implements CommandExecutor {
 
         Player p = (Player) sender;
 
-        if (!p.hasPermission("survival.command.spawn") ||
-                !p.hasPermission("survival.command.*") ||
-                !p.hasPermission("survival.*")) {
+        if (!p.hasPermission("survival.command.spawn")) {
             p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.RED + "You do not have permission to execute this command!");
             return true;
         }

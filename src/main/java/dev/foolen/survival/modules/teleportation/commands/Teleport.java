@@ -19,9 +19,7 @@ public class Teleport implements CommandExecutor {
 
         Player p = (Player) sender;
 
-        if (!p.hasPermission("survival.command.teleport") ||
-                !p.hasPermission("survival.command.*") ||
-                !p.hasPermission("survival.*")) {
+        if (!p.hasPermission("survival.command.teleport")) {
             p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.RED + "You do not have permission to execute this command!");
             return true;
         }
@@ -39,10 +37,10 @@ public class Teleport implements CommandExecutor {
                 p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.RED + "You can't teleport to yourself!");
             } else {
                 p.teleport(target.getLocation());
-                p.sendMessage(SurvivalPlugin.PREFIX + "You have been teleport to " + target.getName() + "!");
+                p.sendMessage(SurvivalPlugin.PREFIX + "You have been teleport to " + ChatColor.GRAY + target.getName() + ChatColor.GREEN + "!");
             }
         } else {
-            p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.RED + args[0] + " can not be found. Are you sure he is online on the same server as you?");
+            p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.GRAY + args[0] + ChatColor.RED + " can not be found. Are you sure he is online on the same server as you?");
         }
         return true;
     }

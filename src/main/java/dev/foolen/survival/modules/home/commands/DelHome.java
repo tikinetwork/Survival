@@ -23,9 +23,7 @@ public class DelHome implements CommandExecutor {
 
         Player p = (Player) sender;
 
-        if (!p.hasPermission("survival.command.delhome") ||
-                !p.hasPermission("survival.command.*") ||
-                !p.hasPermission("survival.*")) {
+        if (!p.hasPermission("survival.command.delhome")) {
             p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.RED + "You do not have permission to execute this command!");
             return true;
         }
@@ -58,9 +56,9 @@ public class DelHome implements CommandExecutor {
             }
 
             cf.save();
-            p.sendMessage(SurvivalPlugin.PREFIX + homeName + "'s location has been removed!");
+            p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.GRAY + homeName + "'s " + ChatColor.GREEN + "location has been removed.");
         } else {
-            p.sendMessage(SurvivalPlugin.PREFIX + "No homes have been set!");
+            p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.RED + "No homes have been set.");
         }
         return true;
     }

@@ -16,7 +16,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public final class SurvivalPlugin extends JavaPlugin {
 
     private static SurvivalPlugin instance;
-    public static String PREFIX;
+    public static final String PREFIX = ChatColor.DARK_GRAY + "[" + ChatColor.DARK_GREEN + "TikiNetwork" + ChatColor.DARK_GRAY + "]" + ChatColor.GREEN + " ";
 
     @Override
     public void onEnable() {
@@ -24,7 +24,6 @@ public final class SurvivalPlugin extends JavaPlugin {
 
         // Load default configuration options
         saveDefaultConfig();
-        PREFIX = ChatColor.translateAlternateColorCodes('&', getConfig().getString("prefix"));
 
         // Load modules
         new SpawnModule();

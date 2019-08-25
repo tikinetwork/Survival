@@ -52,7 +52,7 @@ public class SetWarp implements CommandExecutor {
         cf.save();
         WarpModule.setWarpLocation(warpName, loc);
 
-        p.sendMessage(SurvivalPlugin.PREFIX + warpName + "'s warp location has been set!");
+        p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.GRAY + warpName + "'s " + ChatColor.GREEN + "warp location has been set!");
         return true;
     }
 }

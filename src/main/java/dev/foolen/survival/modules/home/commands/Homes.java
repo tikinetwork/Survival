@@ -22,9 +22,7 @@ public class Homes implements CommandExecutor {
 
         Player p = (Player) sender;
 
-        if (!p.hasPermission("survival.command.homes") ||
-                !p.hasPermission("survival.command.*") ||
-                !p.hasPermission("survival.*")) {
+        if (!p.hasPermission("survival.command.homes")) {
             p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.RED + "You do not have permission to execute this command!");
             return true;
         }

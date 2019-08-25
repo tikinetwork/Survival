@@ -21,9 +21,7 @@ public class SetSpawn implements CommandExecutor {
 
         Player p = (Player) sender;
 
-        if (!p.hasPermission("survival.command.setspawn") ||
-                !p.hasPermission("survival.command.*") ||
-                !p.hasPermission("survival.*")) {
+        if (!p.hasPermission("survival.command.setspawn")) {
             p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.RED + "You do not have permission to execute this command!");
             return true;
         }
@@ -43,7 +41,7 @@ public class SetSpawn implements CommandExecutor {
         SpawnModule.setSpawnLocation(loc);
         loc.getWorld().setSpawnLocation(loc);
 
-        p.sendMessage(SurvivalPlugin.PREFIX + "Spawn location has been set!");
+        p.sendMessage(SurvivalPlugin.PREFIX + "Spawn location has been set.");
         return true;
     }
 }

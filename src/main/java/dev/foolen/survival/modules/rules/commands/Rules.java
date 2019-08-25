@@ -21,9 +21,7 @@ public class Rules implements CommandExecutor {
 
         Player p = (Player) sender;
 
-        if (!p.hasPermission("survival.command.rules") ||
-                !p.hasPermission("survival.command.*") ||
-                !p.hasPermission("survival.*")) {
+        if (!p.hasPermission("survival.command.rules")) {
             p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.RED + "You do not have permission to execute this command!");
             return true;
         }
@@ -33,7 +31,7 @@ public class Rules implements CommandExecutor {
         if (rules.size() > 0) {
             p.sendMessage(SurvivalPlugin.PREFIX + "Rules:");
             rules.forEach(rule -> {
-                p.sendMessage(ChatColor.GRAY + "  - " + ChatColor.GREEN + rule);
+                p.sendMessage(ChatColor.GRAY + " - " + ChatColor.GREEN + rule);
             });
         } else {
             p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.RED + "There are currently no rules available. WOOOO!!!");

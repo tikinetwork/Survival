@@ -44,12 +44,12 @@ public class DelWarp implements CommandExecutor {
 
         cf.save();
         if (WarpModule.getWarpLocation(warpName) == null) {
-            p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.RED + warpName + "'s warp location has not been set!");
+            p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.GRAY + warpName + "'s " + ChatColor.RED + "warp location has not been set!");
             return true;
         }
 
         WarpModule.removeWarpLocation(warpName);
-        p.sendMessage(SurvivalPlugin.PREFIX + warpName + "'s warp location has been removed!");
+        p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.GRAY + warpName + "'s " + ChatColor.GREEN + "warp location has been removed!");
         return true;
     }
 }

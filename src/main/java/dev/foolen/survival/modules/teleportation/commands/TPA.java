@@ -20,9 +20,7 @@ public class TPA implements CommandExecutor {
 
         Player p = (Player) sender;
 
-        if (!p.hasPermission("survival.command.tpa") ||
-                !p.hasPermission("survival.command.*") ||
-                !p.hasPermission("survival.*")) {
+        if (!p.hasPermission("survival.command.tpa")) {
             p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.RED + "You do not have permission to execute this command!");
             return true;
         }
@@ -38,13 +36,13 @@ public class TPA implements CommandExecutor {
         if (target != null) {
             boolean requestSend = TeleportationModule.makeTeleportRequest(p, target);
             if (requestSend) {
-                p.sendMessage(SurvivalPlugin.PREFIX + "Your teleportation request to " + target.getName() + " has been sent!");
+                p.sendMessage(SurvivalPlugin.PREFIX + "Your teleportation request to " + ChatColor.GRAY + target.getName() + ChatColor.GREEN + " has been sent!");
                 target.sendMessage(SurvivalPlugin.PREFIX + ChatColor.GOLD + p.getName() + " would like to teleport to you. Please respond with " + ChatColor.GRAY + "/tpaccept " + ChatColor.GOLD + "or " + ChatColor.GRAY + "/tpdeny" + ChatColor.GOLD + ".");
             } else {
                 p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.RED + "You already have an active teleport request to this player!");
             }
         } else {
-            p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.RED + "Target player could not be found! Is he/she online?");
+            p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.GRAY + args[0] + ChatColor.RED + " could not be found! Is he/she online?");
         }
         return true;
     }

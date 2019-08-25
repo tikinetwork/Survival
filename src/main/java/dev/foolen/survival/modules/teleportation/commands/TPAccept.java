@@ -20,9 +20,7 @@ public class TPAccept implements CommandExecutor {
 
         Player p = (Player) sender;
 
-        if (!p.hasPermission("survival.command.tpaccept") ||
-                !p.hasPermission("survival.command.*") ||
-                !p.hasPermission("survival.*")) {
+        if (!p.hasPermission("survival.command.tpaccept")) {
             p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.RED + "You do not have permission to execute this command!");
             return true;
         }
@@ -36,7 +34,7 @@ public class TPAccept implements CommandExecutor {
         Player target = Bukkit.getPlayer(args[0]);
         TeleportationModule.respondToRequest(target, p);
         target.teleport(p.getLocation());
-        p.sendMessage(SurvivalPlugin.PREFIX + target.getName() + "'s teleport request has been approved.");
+        p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.GRAY + target.getName() + "'s " + ChatColor.GREEN + "teleport request has been approved.");
         return true;
     }
 }

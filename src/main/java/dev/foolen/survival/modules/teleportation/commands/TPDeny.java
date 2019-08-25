@@ -20,9 +20,7 @@ public class TPDeny implements CommandExecutor {
 
         Player p = (Player) sender;
 
-        if (!p.hasPermission("survival.command.tpdeny") ||
-                !p.hasPermission("survival.command.*") ||
-                !p.hasPermission("survival.*")) {
+        if (!p.hasPermission("survival.command.tpdeny")) {
             p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.RED + "You do not have permission to execute this command!");
             return true;
         }
@@ -35,7 +33,7 @@ public class TPDeny implements CommandExecutor {
 
         Player from = Bukkit.getPlayer(args[0]);
         TeleportationModule.respondToRequest(from, p);
-        p.sendMessage(SurvivalPlugin.PREFIX + from.getName() + "'s teleport request has been denied.");
+        p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.GRAY + from.getName() + "'s " + ChatColor.GREEN + "teleport request has been denied.");
         return true;
     }
 }

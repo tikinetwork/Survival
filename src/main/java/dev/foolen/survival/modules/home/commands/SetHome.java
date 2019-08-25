@@ -12,6 +12,7 @@ import org.bukkit.configuration.Configuration;
 import org.bukkit.entity.Player;
 import org.shanerx.configapi.ConfigFile;
 
+import java.util.HashMap;
 import java.util.UUID;
 
 public class SetHome implements CommandExecutor {
@@ -24,9 +25,7 @@ public class SetHome implements CommandExecutor {
 
         Player p = (Player) sender;
 
-        if (!p.hasPermission("survival.command.sethome") ||
-                !p.hasPermission("survival.command.*") ||
-                !p.hasPermission("survival.*")) {
+        if (!p.hasPermission("survival.command.sethome")) {
             p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.RED + "You do not have permission to execute this command!");
             return true;
         }
@@ -38,6 +37,17 @@ public class SetHome implements CommandExecutor {
         }
 
         String homeName = args[0].toLowerCase();
+        HashMap<String, Location> homes = HomeModule.getHomesFromPlayer(p.getUniqueId());
+
+        if (homes != null) {
+            if (!homes.containsKey(homeName)) {
+                if (hasMaxHomes(p, homes)) {
+                    p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.RED + "You already have the maximum amount of homes set!");
+                    return true;
+                }
+            }
+        }
+
         SurvivalPlugin plugin = SurvivalPlugin.getInstance();
 
         ConfigFile cf = new ConfigFile(plugin.getDataFolder(), "homes");
@@ -56,7 +66,19 @@ public class SetHome implements CommandExecutor {
         cf.save();
         HomeModule.setHome(uuid, homeName, loc);
 
-        p.sendMessage(SurvivalPlugin.PREFIX + homeName + " has been set!");
+        p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.GRAY + homeName + ChatColor.GREEN + " has been set!");
         return true;
+    }
+
+    private boolean hasMaxHomes(Player p, HashMap<String, Location> homes) {
+        int maxHomesAllowed = 3;
+
+        if (p.hasPermission("group.vip+")) {
+            maxHomesAllowed = 10;
+        } else if (p.hasPermission("group.vip")) {
+            maxHomesAllowed = 5;
+        }
+
+        return homes.size() == maxHomesAllowed;
     }
 }

@@ -39,7 +39,7 @@ public class Warp implements CommandExecutor {
         if (warpLocation != null) {
             p.teleport(warpLocation);
         } else {
-            p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.RED + warpName + "'s warp location has not been set.");
+            p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.GRAY + warpName + "'s " + ChatColor.GREEN + "warp location has not been set.");
         }
         return true;
     }
