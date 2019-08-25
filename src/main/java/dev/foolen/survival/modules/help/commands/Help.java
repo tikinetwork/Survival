@@ -36,7 +36,7 @@ public class Help implements CommandExecutor {
         if (playerCommands.size() > 0) {
             p.sendMessage(SurvivalPlugin.PREFIX + "Commands:");
             playerCommands.forEach((cmd, data) -> {
-                String usage = data.get("usage").replace("<command>", "<" + cmd + ">");
+                String usage = data.get("usage").replace("<command>", cmd);
                 p.sendMessage(ChatColor.WHITE + " " + usage + ChatColor.GRAY + " - " + ChatColor.GREEN + data.get("description"));
             });
         } else {
