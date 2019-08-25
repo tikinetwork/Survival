@@ -62,11 +62,14 @@ commands:
     usage: /<command> <name>
     description: Denies teleport request from a player.
   tppos:
-    usage: /<command> <name>
+    usage: /<command> <x> <y> <z>
     description: Teleports sender to a location.
   pvp:
     usage: /<command>
     description: Toggles pvp for sender.
+  help:
+    usage: /<command>
+    description: Shows a list of all available survival commands.
 
 permissions:
   survival.*:
@@ -107,6 +110,7 @@ permissions:
       survival.command.tpdeny: true
       survival.command.tppos: true
       survival.command.pvp: true
+      survival.command.help: true
   survival.command.setspawn:
     description: Grants access to the /setspawn command.
     default: op
@@ -163,4 +167,7 @@ permissions:
     default: op
   survival.command.pvp:
     description: Grants access to the /pvp command.
+    default: op
+  survival.command.help:
+    description: Grants access to the /help command.
     default: op

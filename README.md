@@ -25,6 +25,7 @@
 | `/tpdeny` | Denies teleport request from a player. |
 | `/tppos` | Teleports sender to a location |
 | `/pvp` | Toggles pvp for sender. |
+| `/help` | Shows a list of all available survival commands. |
 
 ## Permissions
 | Permission                | Description                          |
@@ -53,6 +54,7 @@
 | `survival.command.tpdeny` | Grants access to the `/tpdeny` command. |
 | `survival.command.tppos` | Grants access to the `/tppos` command. |
 | `survival.command.pvp` | Grants access to the `/pvp` command. |
+| `survival.command.help` | Grants access to the `/help` command. |
 
 ## Authors
 - [Tjeu Foolen](https://github.com/tjeufoolen/)
