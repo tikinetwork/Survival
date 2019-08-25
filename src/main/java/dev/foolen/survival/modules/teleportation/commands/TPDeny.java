@@ -34,6 +34,7 @@ public class TPDeny implements CommandExecutor {
         Player from = Bukkit.getPlayer(args[0]);
         TeleportationModule.respondToRequest(from, p);
         p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.GRAY + from.getName() + "'s " + ChatColor.GREEN + "teleport request has been denied.");
+        from.sendMessage(SurvivalPlugin.PREFIX + ChatColor.GRAY + p.getName() + ChatColor.GREEN + " denied your teleport request.");
         return true;
     }
 }

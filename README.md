@@ -23,6 +23,7 @@
 | `/tpa` | Requests teleport approve to a player. |
 | `/tpaccept` | Accepts teleport request from a player. |
 | `/tpdeny` | Denies teleport request from a player. |
+| `/tppos` | Teleports sender to a location |
 
 ## Permissions
 | Permission                | Description                          |
@@ -46,6 +47,7 @@
 | `survival.command.tpa` | Grants access to the `/tpa` command. |
 | `survival.command.tpaccept` | Grants access to the `/tpaccept` command. |
 | `survival.command.tpdeny` | Grants access to the `/tpdeny` command. |
+| `survival.command.tppos` | Grants access to the `/tppos` command. |
 
 ## Authors
 - [Tjeu Foolen](https://github.com/tjeufoolen/)

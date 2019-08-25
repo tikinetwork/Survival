@@ -35,6 +35,7 @@ public class TPAccept implements CommandExecutor {
         TeleportationModule.respondToRequest(target, p);
         target.teleport(p.getLocation());
         p.sendMessage(SurvivalPlugin.PREFIX + ChatColor.GRAY + target.getName() + "'s " + ChatColor.GREEN + "teleport request has been approved.");
+        target.sendMessage(SurvivalPlugin.PREFIX + ChatColor.GRAY + p.getName() + ChatColor.GREEN + " approved your teleport request.");
         return true;
     }
 }
