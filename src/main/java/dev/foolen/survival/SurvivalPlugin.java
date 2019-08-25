@@ -5,6 +5,7 @@ import dev.foolen.survival.modules.enhancedmobdrops.EnhancedMobDropsModule;
 import dev.foolen.survival.modules.fly.FlyModule;
 import dev.foolen.survival.modules.gamemode.GameModeModule;
 import dev.foolen.survival.modules.home.HomeModule;
+import dev.foolen.survival.modules.pvp.PVPModule;
 import dev.foolen.survival.modules.rules.RulesModule;
 import dev.foolen.survival.modules.sleeppercentage.SleepPercentageModule;
 import dev.foolen.survival.modules.spawn.SpawnModule;
@@ -36,6 +37,7 @@ public final class SurvivalPlugin extends JavaPlugin {
         new FlyModule();
         new GameModeModule();
         new TeleportationModule();
+        new PVPModule();
     }
 
     public static SurvivalPlugin getInstance() {

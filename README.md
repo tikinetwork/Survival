@@ -24,6 +24,7 @@
 | `/tpaccept` | Accepts teleport request from a player. |
 | `/tpdeny` | Denies teleport request from a player. |
 | `/tppos` | Teleports sender to a location |
+| `/pvp` | Toggles pvp for sender. |
 
 ## Permissions
 | Permission                | Description                          |
@@ -48,6 +49,7 @@
 | `survival.command.tpaccept` | Grants access to the `/tpaccept` command. |
 | `survival.command.tpdeny` | Grants access to the `/tpdeny` command. |
 | `survival.command.tppos` | Grants access to the `/tppos` command. |
+| `survival.command.pvp` | Grants access to the `/pvp` command. |
 
 ## Authors
 - [Tjeu Foolen](https://github.com/tjeufoolen/)
