@@ -4,6 +4,8 @@ import dev.foolen.survival.SurvivalPlugin;
 import dev.foolen.survival.modules.spawn.commands.SetSpawn;
 import dev.foolen.survival.modules.spawn.commands.Spawn;
 import dev.foolen.survival.modules.spawn.listeners.PlayerJoin;
+import dev.foolen.survival.modules.spawn.listeners.PlayerMove;
+import dev.foolen.survival.modules.spawn.listeners.PlayerRespawn;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -70,6 +72,8 @@ public class SpawnModule {
         PluginManager pm = plugin.getServer().getPluginManager();
 
         pm.registerEvents(new PlayerJoin(), plugin);
+        pm.registerEvents(new PlayerMove(), plugin);
+        pm.registerEvents(new PlayerRespawn(), plugin);
     }
 
     public static boolean isTeleporting(UUID uuid) {
